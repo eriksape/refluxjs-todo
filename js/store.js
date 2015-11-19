@@ -1,4 +1,4 @@
-(function(Reflux, TodoActions, global) {
+
     'use strict';
 
     // some variables and helpers for our fake database stuff
@@ -11,9 +11,10 @@
         });
     }
 
-    global.todoListStore = Reflux.createStore({
+    window.todoListStore = Reflux.createStore({
         // this will set up listeners to all publishers in TodoActions, using onKeyname (or keyname) as callbacks
         listenables: [TodoActions],
+        list:[],
         onEditItem: function(itemKey, newLabel) {
             var foundItem = getItemByKey(this.list,itemKey);
             if (!foundItem) {
@@ -82,4 +83,3 @@
         }
     });
 
-})(window.Reflux, window.TodoActions, window);
